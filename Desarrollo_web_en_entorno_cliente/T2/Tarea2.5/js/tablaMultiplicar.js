@@ -19,3 +19,19 @@ const mostrarTabla = (event) => {
         document.getElementById("numero").value = '';
     }
 }
+const mostrarTablaDividir =(event) => {
+    event.preventDefault();
+    const numero = Number(document.getElementById('numero2').value);
+
+    if (numero>= 0 && numero <=10) {
+        let tabla = document.getElementById('identidad_virtual2');
+        let tablaDividir = `<h2>Tabla de dividir del número ${numero}</h2>`;
+        tablaDividir +='<ul>';
+        for (let i=0;i<=numero;i++){
+            tablaDividir += `<li>${numero} / ${i} = ${numero / i}</li>`;
+        }
+        tablaDividir +='</ul>';
+        tabla.innerHTML = tablaDividir;
+
+    }
+}
