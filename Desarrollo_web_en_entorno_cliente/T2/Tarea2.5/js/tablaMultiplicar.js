@@ -28,6 +28,7 @@ const mostrarTablaDividir =(event) => {
         let tablaDividir = `<h2>Tabla de dividir del número ${numero}</h2>`;
         tablaDividir +='<ul>';
         for (let i=0;i<=numero;i++){
+            
             tablaDividir += `<li>${numero} / ${i} = ${numero / i}</li>`;
         }
         tablaDividir +='</ul>';
