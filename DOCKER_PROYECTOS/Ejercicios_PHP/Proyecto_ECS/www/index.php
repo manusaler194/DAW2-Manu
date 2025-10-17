@@ -26,7 +26,7 @@
 <body>
 
 <?php
-// Declaración de variables
+
 $nombre = "Manuel";
 $apellidos = "Rubio Torrenti";
 $email = "manrubtor@alu.edu.gva.es";
@@ -119,7 +119,7 @@ array("continente"=>"África", "paises"=>array(array("pais"=>"Chad", "capital"=>
 array("continente"=>"Asia", "paises"=>array(array("pais"=>"China", "capital"=>"Pekín", "bandera"=>"img/china.png"), array("pais"=>"Japón", "capital"=>"Tokio", "bandera"=>"img/japon.png"))),
 array("continente"=>"Oceanía", "paises"=>array(array("pais"=>"Australia", "capital"=>"Canberra", "bandera"=>"img/australia.png")))
 );
-// Mostrar los datos en una tabla HTML
+
 echo '<table class="tabledatos">';
 echo "<tr><td><strong>Nombre</strong></td><td>$nombre</td></tr>";
 echo "<tr><td><strong>Apellidos</strong></td><td>$apellidos</td></tr>";
