@@ -21,6 +21,10 @@
             width: 30px;
             height: 30px;
         }
+        #paleta {
+            width: 60px;
+            height: 25px;
+        }
     </style>
 </head>
 <body>
@@ -298,7 +302,30 @@ foreach ($continentes as $continente) {
         echo "</tr>";
     }
 }
+echo "</table>";
 
+
+echo "<br>";
+echo "<table>";
+
+for ($pri =0;$pri<=255;$pri+=50){
+    
+    for ($seg =0;$seg <=255;$seg +=50){
+        echo "<tr>";
+        
+        for ($ter =0;$ter <=255;$ter +=50){
+        
+        
+        
+        echo "<td><div id='paleta' style='background-color: rgb(${pri}, ${seg}, ${ter});'></div></td>";
+        
+       
+        
+        }
+        echo "</tr>";
+    }
+}
+echo "/table";
 
 ?>
 
