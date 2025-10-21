@@ -325,7 +325,7 @@ for ($pri =0;$pri<=255;$pri+=50){
         echo "</tr>";
     }
 }
-echo "/table";
+echo "</table>";
 
 ?>
 
