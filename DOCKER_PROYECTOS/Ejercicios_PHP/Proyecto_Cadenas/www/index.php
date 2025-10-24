@@ -65,7 +65,7 @@
    
         
 
-   for ($i=0; $i < count($partes); $i++) { 
+   /*for ($i=0; $i < count($partes); $i++) { 
         $parte = $partes[$i];
         
         
@@ -76,7 +76,37 @@
             echo "&nbsp; ";
         }
     }
-    
+    */
+
+
+
+    echo "<h2>Ejercicio 6</h2>";
+    $numeros = 1123456789;
+    $numeros = number_format($numeros, 0, '.');
+    echo $numeros;
+
+    $contraseña = "Hola comoestas";
+  //  $contraseña = explode($contraseña);
+    $vocales = "aeiou";
+
+        if (strlen($contraseña)<6 || strlen($contraseña >10)) {
+            Echo "Longitud incorrecta";
+        }
+        if (strpos ($contraseña, ' ') !== false) {
+            echo "No se permiten espacios en blanco";
+        }
+        for ($i=1; $i <strlen($contraseña) ; $i++) { 
+        $contraseña = explode($contraseña);
+        if (strpos($vocales,$contraseña[$i])!== false){
+            echo "Tiene que tener una vocal";
+        }
+        }
+        $contraseña = explode($contraseña);
+        for ($i=0; $i <strlen($contraseña) ; $i++) { 
+            if ($strpos($vocales,$contraseña[$i+1])||$strpos($vocales,$contraseña[$i-1])&&$strpos($vocales,$contraseña[$i])!== false){
+                echo "No pueden haber mas de dos vocales juntas";
+            }
+        }
     ?>
 </body>
 </html>
