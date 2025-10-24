@@ -101,12 +101,21 @@
             echo "Tiene que tener una vocal";
         }
         }
-        $contraseña = explode($contraseña);
+        
         for ($i=0; $i <strlen($contraseña) ; $i++) { 
             if ($strpos($vocales,$contraseña[$i+1])||$strpos($vocales,$contraseña[$i-1])&&$strpos($vocales,$contraseña[$i])!== false){
                 echo "No pueden haber mas de dos vocales juntas";
             }
+            
         }
+        $contraseña = explode($contraseña);
+        for ($i=0; $i <count($contraseña) ; $i++) { 
+            if ($contraseña[$i]==$contraseña[$i+1] && $contraseña[$i+1]==$contraseña[$i+2]) {
+                echo "No pueden haber mas de tres letras iguales seguidas";
+                break;
+            }
+        }
+        
     ?>
 </body>
 </html>
