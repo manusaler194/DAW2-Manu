@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    img[data-categoria="paisaje"] {
+      border: 1px;
+      border-color: green;
+    }
+    [data-categoria] {
+      box-shadow: black 10px;
+    }
+    input[type="email"] {
+      border-color: green;
+    }
+    input[placeholder] {
+      padding: 5px;
+    }
+    input[type^="t"] {
+      text-transform: uppercase;
+    }
+  </style>
+  <body>
+    <section class="galeria">
+      <img src="img1.jpg" alt="Imagen 1" data-categoria="paisaje" />
+      <img src="img2.jpg" alt="Imagen 2" data-categoria="retrato" />
+      <img src="img3.jpg" alt="Imagen 3" data-categoria="paisaje" />
+      <img src="img4.jpg" alt="Imagen 4" />
+    </section>
+
+    <form class="busqueda">
+      <input type="text" placeholder="Buscar..." />
+      <input type="email" placeholder="Correo" />
+      <input type="submit" value="Enviar" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    a:hover {
+      color: red;
+    }
+    li.lista-enumerada:nth-child(odd) {
+      background-color: skyblue;
+    }
+    li.lista-enumerada:nth-child(even) {
+      background-color: gray;
+    }
+    a:visited {
+      color: chocolate;
+    }
+    button:active {
+      width: 10px;
+      height: 10px;
+    }
+    input:focus {
+      border-color: gold;
+    }
+    .lista-numerada li:first-child {
+      border: 2px solid blue;
+    }
+
+    .lista-numerada li:last-child {
+      border: 2px solid red;
+    }
+  </style>
+  <body>
+    <nav class="extra-menu">
+      <ul>
+        <li><a href="#">Item A</a></li>
+        <li><a href="#">Item B</a></li>
+        <li><a href="#">Item C</a></li>
+        <li><a href="#">Item D</a></li>
+      </ul>
+    </nav>
+
+    <ul class="lista-numerada">
+      <li>Uno</li>
+      <li>Dos</li>
+      <li>Tres</li>
+      <li>Cuatro</li>
+      <li>Cinco</li>
+    </ul>
+
+    <button class="boton">Haz clic</button>
+  </body>
+</html>

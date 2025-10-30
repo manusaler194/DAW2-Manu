@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    p::first-line {
+      text-transform: uppercase;
+    }
+    p::first-letter {
+      font-size: 2em;
+    }
+    p::before {
+      content: "``";
+    }
+    p::after {
+      content: "``";
+    }
+  </style>
+  <body>
+    <section class="texto-largo">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+        potenti. Donec at metus posuere, ...
+      </p>
+    </section>
+  </body>
+</html>
