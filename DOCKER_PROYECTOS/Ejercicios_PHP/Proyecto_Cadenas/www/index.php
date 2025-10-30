@@ -85,22 +85,28 @@
     $numeros = number_format($numeros, 0, '.');
     echo $numeros;
 
-    $contraseña = "Hola comoestas";
+    $contraseña = "artglmn";
+    echo "<br>";
   //  $contraseña = explode($contraseña);
     $vocales = "aeiou";
 
-        if (strlen($contraseña)<6 || strlen($contraseña >10)) {
+        if (strlen($contraseña)<6 || strlen($contraseña)>10) {
             Echo "Longitud incorrecta";
         }
         if (strpos ($contraseña, ' ') !== false) {
             echo "No se permiten espacios en blanco";
         }
-        for ($i=1; $i <strlen($contraseña) ; $i++) { 
-        $contraseña = explode($contraseña);
-        if (strpos($vocales,$contraseña[$i])!== false){
-            echo "Tiene que tener una vocal";
+        for ($i=0; $i <strlen($contraseña) ; $i++) { 
+        $caracter = $contraseña[$i];
+        if (strpos($vocales,$caracter)!== false){
+            $tienevocal =true;
+            break;
+          
+            
         }
+
         }
+        if (!$tienevocal)echo "Tiene que tener una vocal";
         
         for ($i=0; $i <strlen($contraseña) ; $i++) { 
             if ($strpos($vocales,$contraseña[$i+1])||$strpos($vocales,$contraseña[$i-1])&&$strpos($vocales,$contraseña[$i])!== false){
@@ -115,7 +121,7 @@
                 break;
             }
         }
-        
+
     ?>
 </body>
 </html>
