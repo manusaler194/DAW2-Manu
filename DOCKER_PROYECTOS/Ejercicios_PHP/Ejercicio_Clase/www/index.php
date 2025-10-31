@@ -48,9 +48,25 @@
     <input type="textarea" placeholder="comentarios" name="comentarios" id=""><br/>
     <input type="color" name="color" id=""><br/>
     <input type="hidden" name="oculto" value="prueba"><br/>
-    <input type="submit" value="" placeholder="enviar">
+    <input type="submit" value="" placeholder="enviar"><br/>
 </form>
 
+    <form action="./enviar.php" method="POST">
+        <input type="number" placeholder="num1" name="num1" id=""><br/>
+        <input type="number" placeholder="num2" name="num2" id=""><br/>
+        <button name="enviar">Sumar</button>
+    </form>
+
+
+
+    <form enctype="multipart/form-data" action="./subir.php" method="POST">
+    <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+    
+    <!-- El nombre del elemento de entrada determina el nombre en el array $_FILES -->
+    <input name="fichero_usuario" type="file" />
+    <input type="submit" value="Enviar fichero" />
+</form>
+</form>
 </form>
 </body>
 </html>

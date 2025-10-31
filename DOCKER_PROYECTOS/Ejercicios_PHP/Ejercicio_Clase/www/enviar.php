@@ -1,4 +1,11 @@
 <?php
+if(isset($_POST)){
+
+}
+
+
+
+
 
 
 
@@ -19,4 +26,8 @@ echo "Usted tiene $formu[edad] años<br>";
 echo "Su comentario es $formu[comentarios] <br>";
 echo "<p style='color:$formu[color] ;'> Su color es $formu[color]</p> ";
 echo "El valor oculto es '$formu[oculto]'";
+$num1 = $_POST["num1"];
+$num2 = $_POST["num2"];
+$suma = $num1 + $num2;
+echo "La suma de $num1 + $num2 es = $suma";
 ?>
