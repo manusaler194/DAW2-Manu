@@ -1,5 +1,21 @@
-<?php
-$dir_subida = './img/';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subida</title>
+</head>
+<style>
+    img {
+        height: 100px;
+    }
+</style>
+<body>
+    <?php
+$dir_subida = './subida/';
+if (isset($_FILES['fichero_usuario'])) {
+    
+
 $fichero_subido = $dir_subida . basename($_FILES['fichero_usuario']['name']);
 
 //basename: muestra el nombre del fichero con la extensión
@@ -15,7 +31,20 @@ echo 'Más información de depuración:';
 print_r($_FILES);
 
 print "</pre>";
-
+}
 $fich = $_FILES;
-Echo "El nombre es $fich[";
+$files1 = scandir($dir_subida);
+
+for ($i=2;$i<count($files1);$i++){
+    echo "<form action='./enviar.php' method='POST'>";
+    echo "<img src='$dir_subida$files1[$i]' alt=''><br>";
+    echo " <button type='submit' value='$files1[$i]'>BORRAR</button>";
+    echo "</form>";
+}
+
+
+
 ?>
+    
+</body>
+</html>

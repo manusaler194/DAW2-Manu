@@ -57,7 +57,7 @@
         <button name="enviar">Sumar</button>
     </form>
 
-
+    
 
     <form enctype="multipart/form-data" action="./subir.php" method="POST">
     <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
