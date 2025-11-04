@@ -13,6 +13,15 @@
 <body>
     <?php
 $dir_subida = './subida/';
+if (isset($_POST['eliminar'])) {
+    $archivo_a_borrar = $dir_subida . $_POST['eliminar'];
+    if (is_file($archivo_a_borrar)) {
+        unlink($archivo_a_borrar);
+        echo "<p>Imagen eliminada: {$_POST['eliminar']}</p>";
+    } else {
+        echo "<p>No se pudo eliminar: archivo no encontrado.</p>";
+    }
+}
 if (isset($_FILES['fichero_usuario'])) {
     
 
@@ -36,9 +45,9 @@ $fich = $_FILES;
 $files1 = scandir($dir_subida);
 
 for ($i=2;$i<count($files1);$i++){
-    echo "<form action='./enviar.php' method='POST'>";
+    echo "<form method='POST'>";
     echo "<img src='$dir_subida$files1[$i]' alt=''><br>";
-    echo " <button type='submit' value='$files1[$i]'>BORRAR</button>";
+    echo " <button type='submit' name='eliminar' value='$files1[$i]'>BORRAR</button>";
     echo "</form>";
 }
 

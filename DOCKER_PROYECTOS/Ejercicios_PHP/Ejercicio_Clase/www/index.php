@@ -56,8 +56,20 @@
         <input type="number" placeholder="num2" name="num2" id=""><br/>
         <button name="enviar">Sumar</button>
     </form>
-
+    <form action="./enviar.php" method="POST">
+    <?php
     
+    for ($i=0; $i <10 ; $i++) { 
+     echo   " numero $i<input type='number'  name='inp[]' value='' id=''><br/>";
+    }
+    
+    ?>
+    <button name="enviar">Sumar</button>
+    </form>
+    
+
+
+
 
     <form enctype="multipart/form-data" action="./subir.php" method="POST">
     <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->

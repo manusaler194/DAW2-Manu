@@ -30,4 +30,8 @@ $num1 = $_POST["num1"];
 $num2 = $_POST["num2"];
 $suma = $num1 + $num2;
 echo "La suma de $num1 + $num2 es = $suma";
+$numerosinp = $_POST['inp'];
+$sum = array_sum($numerosinp);
+echo "<br>La suma total de todos es $sum";
+
 ?>
