@@ -5,6 +5,12 @@ session_start();
 
 
 //session_unset();
+    if (!isset($_SESSION['tele'])) $_SESSION['tele'] = 0;
+    if (!isset($_SESSION['raton'])) $_SESSION['raton'] = 0;
+    if (!isset($_SESSION['teclado'])) $_SESSION['teclado'] = 0;
+    if (!isset($_SESSION['cpu'])) $_SESSION['cpu'] = 0;
+
+   if(isset($_POST["comprar"])){
 $tele = $_POST['tele'];
 $raton = $_POST['raton'];
 $teclado = $_POST['teclado'];
@@ -19,8 +25,15 @@ $_SESSION['cpu'] += $cpu;
 $total = $_SESSION['tele']*100+$_SESSION['raton']*5+$_SESSION['teclado']*100+$_SESSION['cpu']*200;
 
 echo "CESTA TOTAL = $total";
+   
 
 
+}
+if (isset($_POST['borrartele'])) {unset($_SESSION['tele']);}
+if (isset($_POST['borrarraton'])) {unset($_SESSION['raton']);}
+if (isset($_POST['borrarteclado'])) {unset($_SESSION['teclado']);}
+if (isset($_POST['borrarcpu'])) {unset($_SESSION['cpu']);}
+if (isset($_POST['cerrarSesion'])) {session_unset();}
 
 
 
@@ -36,42 +49,68 @@ echo "CESTA TOTAL = $total";
 </head>
 <body>
     
-   <form action="./autenticar.php" method="post">
-    <input type="text" name="usuario"><br>
-    <input type="text" name="apellido"><br>
-    <input type="number" name="numero" id=""><br>
-    <input type="submit" value="Envia!">
-</form>
+   
 
 <form method="post">
     <p>Tele</p>
     <p>precio 100€</p>
     <input type="number" name="tele" value="0" >
-    <input type="submit" value="comprar">
-</form>
+    <input type="submit" name="comprar" value="comprar">
 
-<form method="post">
+
+
     <p>Ratón</p>
     <p>precio 5€</p>
     <input type="number" name="raton" value="0" >
-    <input type="submit" value="comprar">
-</form>
+    <input type="submit"name="comprar" value="comprar">
 
-<form method="post">
+
+
     <p>Teclado</p>
     <p>precio 100€</p>
     <input type="number" name="teclado" value="0" >
-    <input type="submit" value="comprar">
-</form>
+    <input type="submit"name="comprar" value="comprar">
 
-<form method="post">
+
     <p>CPU</p>
     <p>precio 200€</p>
     <input type="number" name="cpu" value="0" >
-    <input type="submit" value="comprar">
+    <input type="submit"name="comprar" value="comprar">
+
+
+<input type="submit" name="cerrarSesion" value="cerrarSesion">
+</form>
+<?php
+
+echo '<form method="post">
+    <p>Tele = '. $_SESSION['tele'] . '</p>
+    
+    
+    <input type="submit"name="borrartele" value="borrartele">
 </form>
 
+<form method="post">
+    <p>Ratón = '. $_SESSION['raton'] . '</p>
+    
+    
+    <input type="submit"name="borrarraton" value="borrarraton">
+</form>
 
+<form method="post">
+    <p>Teclado = '. $_SESSION['teclado'] . '</p>
+    
+    
+    <input type="submit"name="borrarteclado" value="borrarteclado">
+</form>
+
+<form method="post">
+    <p>CPU = '. $_SESSION['cpu'] . '</p>
+    
+    <input type="submit"name="borrarcpu" value="borrarcpu">
+</form>';
+
+
+?>
 
     
 </body>
