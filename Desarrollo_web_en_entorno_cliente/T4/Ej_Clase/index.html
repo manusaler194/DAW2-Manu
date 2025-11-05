@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+<script>
+      document.addEventListener("DOMContentLoaded", () => {
+        
+        const texto = document.getElementById("texto");
+        window.addEventListener("mousemove", (event) => {
+          const posNavegador = `Navegador: X=${event.clientX}, Y=${event.clientY}`;
+          const posPagina = `Página: X=${event.pageX}, Y=${event.pageY}`;
+          texto.textContent = `${posNavegador} | ${posPagina}`;
+        });
+
+        document.body.addEventListener("keydown", (event) => {
+          alert(`Tecla: ${event.key} | Código: ${event.keyCode}`);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p id="texto" style="pointer-events: none;">mn</p>
+  </body>
+</html>
