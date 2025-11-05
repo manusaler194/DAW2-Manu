@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body></body>
+<script>
+    let morse = {
+        A: ".-",
+        B: "-...",
+        C: "-.-.",
+        D: "-..",
+        E: ".",
+        F: "..-.",
+        G: "--.",
+        H: "....",
+        I: "..",
+        J: ".---",
+        K: "-.-",
+        L: ".-..",
+        M: "--",
+        N: "-.",
+        O: "---",
+        P: ".--.",
+        Q: "--.-",
+        R: ".-.",
+        S: "...",
+        T: "-",
+        U: "..-",
+        V: "...-",
+        W: ".--",
+        X: "-..-",
+        Y: "-.--",
+        Z: "--..",
+        0: "-----",
+        1: ".----",
+        2: "..---",
+        3: "...--",
+        4: "....-",
+        5: ".....",
+        6: "-....",
+        7: "--...",
+        8: "---..",
+        9: "----.",
+        ".": ".-.-.-",
+        ",": "--..--",
+        "?": "..--..",
+        "  ": "/",
+    };
+    let preset = {}; 
+
+    for (let letra in morse) {
+        preset[morse[letra]] = letra;
+    }
+    let text = window.prompt();
+
+    let esmorse = text.includes('.') || text.includes('-');
+
+    let sailida = "";
+
+    if (esmorse) {
+        salida = text.split(" ").map((palabra) =>
+            palabra
+                .split(" ")
+                .map((simb) => preset[simb] || "")
+                .join("")
+        ).join(' ');
+    } else {
+        salida = text.toUpperCase().split('').map(letra => morse[letra] || '').join(' ');
+    }
+    
+    document.body.innerHTML = `<h2>La palabra es: ${salida}</h2>`;
+
+</script>
+
+</html>
