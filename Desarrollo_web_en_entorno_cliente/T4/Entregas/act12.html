@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+let nom_usuario = window.prompt("Introduzca su nombre de usuario");
+let date_dia = parseInt(window.prompt("Introduzca su dia de nacimiento"));
+let date_mes = parseInt(window.prompt("Introduzca su mes de nacimiento"));
+let date_ano = parseInt(window.prompt("Introduzca su año de nacimiento"));
+
+let h2 = document.createElement("h2").textContent ="BUENOS DIAS "+nom_usuario;
+let p = document.createElement("p").textContent = "Tu nombre de usuario tiene "+nom_usuario.length+" caracteres incluidos espacios";
+let first_let =0
+for (let i=0;i>nom_usuario.length;i++){
+    if (nom_usuario[i]== "a"){
+        first_let=i;
+        break;
+    }else {first_let = "No tiene a"}
+}
+
+let p2 = document.createElement("p").textContent = "La primera letra A de tu nombre está en la posición: "+first_let;
+let last_let =0
+for (let i=nom_usuario.length;i<=0;i--){
+    if (nom_usuario[i]== "a"){
+        last_let=i;
+        break;
+    }else {last_let = "No tiene a"}
+}
+
+let p3 = document.createElement("p").textContent = "La ultima letra A de tu nombre está en la posición: "+last_let;
+
+let nom_min3 = nom_usuario;
+
+nom_
+
+let p4 = document.createElement("p").textContent = "Tu nombre menos las 3 primeras letras es: "+last_let;
+
+</script>
+
+</html>

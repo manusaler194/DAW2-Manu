@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    document.body.innerHTML += "<h1>TAREA 03</h1>";
+
+
+    let nombre = prompt("Introduce tu nombre de usuario:");
+    let dia = prompt("Introduce el DÍA de nacimiento:");
+    let mes = prompt("Introduce el MES de nacimiento:");
+    let ano = prompt("Introduce el AÑO de nacimiento:");
+
+
+    let saludo = "Buenos días " + nombre;
+    let longitud = nombre.length;
+    let primeraA = (nombre.toLowerCase().indexOf("a") + 1);
+    let ultimaA = (nombre.toLowerCase().lastIndexOf("a") + 1);
+    let sinTres = nombre.slice(3);
+    let mayusculas = nombre.toUpperCase();
+
+    let hoy = new Date();
+    let edad = hoy.getFullYear() - parseInt(ano);
+    if (
+        hoy.getMonth() + 1 < parseInt(mes) ||
+        (hoy.getMonth() + 1 === parseInt(mes) && hoy.getDate() < parseInt(dia))
+    ) {
+        edad--;
+    }
+
+    let meses = [
+        "enero", "febrero", "marzo", "abril", "mayo", "junio",
+        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+    ];
+    let mesTexto = meses[parseInt(mes) - 1];
+
+    let coseno180 = Math.cos(180 * Math.PI / 180); // Convertir a radianes
+    let maximo = Math.max(34, 67, 23, 75, 35, 19);
+    let azar = Math.random();
+
+    // Mostrar resultados
+    document.body.innerHTML += `<p>${saludo}</p>`;
+    document.body.innerHTML += `<p>Tu nombre tiene ${longitud} caracteres, incluidos espacios.</p>`;
+    document.body.innerHTML += `<p>La primera letra A de tu nombre está en la posición: ${primeraA >= 1 ? primeraA : "No hay A"}</p>`;
+    document.body.innerHTML += `<p>La última letra A de tu nombre está en la posición: ${ultimaA >= 1 ? ultimaA : "No hay A"}</p>`;
+    document.body.innerHTML += `<p>Tu nombre menos las 3 primeras letras es: ${sinTres}</p>`;
+    document.body.innerHTML += `<p>Tu nombre todo en mayúsculas es: ${mayusculas}</p>`;
+    document.body.innerHTML += `<p>Tu edad es: ${edad} años.</p>`;
+    document.body.innerHTML += `<p>Naciste un feliz ${dia} de ${mesTexto} del año ${ano}.</p>`;
+    document.body.innerHTML += `<p>El coseno de 180 es: ${coseno180}</p>`;
+    document.body.innerHTML += `<p>El número mayor de (34,67,23,75,35,19) es: ${maximo}</p>`;
+    document.body.innerHTML += `<p>Ejemplo de número al azar: ${azar}</p>`;
+
+</script>
+
+</html>

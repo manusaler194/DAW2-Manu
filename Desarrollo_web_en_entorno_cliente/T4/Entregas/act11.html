@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+</body>
+
+
+<script>
+
+
+    let numero = parseInt(window.prompt("Escribe un numero mayor que 0"));
+
+
+    let p = document.createElement("p");
+
+    p.textContent = "Los numeros primos de " + numero + " son:";
+
+    document.body.appendChild(p);
+
+
+    for (let i = 2; i < numero; i++) {
+        let res = 0
+        for (let j = i; j >= 1; j--) {
+
+            if (i % j == 0) {
+
+                res++;
+
+            }
+
+        }
+        if (res <= 2) {
+            let p2 = document.createElement("p");
+
+            p2.textContent = i;
+
+            document.body.appendChild(p2);
+        }
+
+    }
+
+
+
+</script>
+
+</html>
