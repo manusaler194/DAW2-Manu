@@ -7,33 +7,24 @@
     <title>Document</title>
 </head>
 
-<body></body>
-
-
-
-
+<body>
 <script>
 
-function imprimirTexto(texto,esMorse){
 
-    let sailida = "";
-    
-    if (esmorse) {
-        salida = text.split(" ").map((palabra) =>
-            palabra
-                .split(" ")
-                .map((simb) => inverso[simb] || "")
-                .join("")
-        ).join(' ');
-    } else {
-        salida = text.toUpperCase().split('').map(letra => morse[letra] || '').join(' ');
-    }
-    
-    document.body.innerHTML = `<h2>La palabra es: ${salida}</h2>`;
+    let datosGuardado = window.localStorage.getItem("textoMorse");
+    let h2 = document.createElement("h2");
+    document.body.appendChild(h2);
+    if (datosGuardado){
+         h2.textContent ="Último resultado "+  datosGuardado;
+        
 
-}
 
-let morse = {
+    } 
+
+
+
+
+    let morse = {
         A: ".-",
         B: "-...",
         C: "-.-.",
@@ -71,24 +62,41 @@ let morse = {
         8: "---..",
         9: "----.",
         ".": ".-.-.-",
-        "-": "-....-",
         ",": "--..--",
         "?": "..--..",
-        "  ": " ",
+        "  ": "/",
     };
-    let inverso = {}; 
+    let preset = {}; 
 
     for (let letra in morse) {
-        inverso[morse[letra]] = letra;
+        preset[morse[letra]] = letra;
     }
     let text = window.prompt();
 
     let esmorse = /^[.\-/\s]+$/.test(text);
 
-    imprimirTexto(text,esmorse)
+    let sailida = "";
+    
+    
+
+    if (esmorse) {
+        salida = text.split(" ").map((palabra) =>
+            palabra
+                .split(" ")
+                .map((simb) => preset[simb] || "")
+                .join("")
+        ).join(' ');
+    } else {
+        salida = text.toUpperCase().split('').map(letra => morse[letra] || '').join(' ');
+    }
+    
+    document.body.innerHTML = `<h2>La palabra es: ${salida}</h2>`;
+    window.localStorage.setItem('textoMorse', JSON.stringify(salida));
 
     
+
     
+
 </script>
-
+</body>
 </html>
