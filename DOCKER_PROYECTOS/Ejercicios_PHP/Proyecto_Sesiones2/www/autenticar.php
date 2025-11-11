@@ -1,39 +1,54 @@
 <?php
+ob_start();
 session_start();
+include("./bd.php");
 
 
-$usuarios=[ ['usuario'=>'estefania','password'=>'1111', 'nombre'=>'Estefania Maestre','rol'=>'ROLE_ALUMNO'],
-
- ['usuario'=>'julio','password'=>'2222', 'nombre'=>'Julio Noguera','rol'=>'ROLE_PROFE'],
-
- ['usuario'=>'jose','password'=>'4444', 'nombre'=>'José Vicente','rol'=>'ROLE_ALUMNO'],
-
- ['usuario'=>'ana','password'=>'333', 'nombre'=>'Ana Fuertes','rol'=>'ROLE_ALUMNO'],
-
- ['usuario'=>'admin','password'=>'999', 'nombre'=>'Administrador','rol'=>'ROLE_PROFE'],
-
-];
-
-$usuario = $_SESSION['usuario'] ?? '';
+$usuario = $_POST['usuario'] ?? '';
 $contra = $_POST['contra'] ?? '';
 
-if (!isset($usuarios[$usuario]) || $usuarios[$usuario]['password'] !== $contra) {
-    
-    
-    
-    header("Location:./index.php");
-    
+
+if (empty($usuario) || empty($contra)){
+    $_SESSION['incorrecta'] = true;
+    header("Location: ./index.php");
+}else {
+    $_SESSION['incorrecta'] = false;
 }
 
+function comprobar($usuario, $contra)
+{
+  include("./bd.php");
+  print_r($usuario);
+  print_r($contra);
+    $comprobacion = false;
+    $res =-1;
+    $i=0;
 
-$_SESSION['rol'] = $usuarios[$usuario]['rol'];
+    
+    while (!$comprobacion) {
+        print_r($i);
+        if ($usuarios[$i]["usuario"] === $usuario && $usuarios[$i]["password"] === $contra) {
+
+            $res = $i;
+            $comprobacion =true;
+            
+        }
+        $i++;
+    }
+
+    return $res;
+}
+$res = comprobar($usuario, $contra);
+if ($res ==-1) {
+
+    header("Location: ./index.php");
+} else {
 
 
+    
+    $_SESSION['usuario'] = $usuario;
+    $_SESSION['rol'] = $usuarios[$res]['rol'];
+    $_SESSION['nombre'] = $usuarios[$res]['nombre'];
 
-
-
-header("Location:./menu.php");
-
-
-?>
-
+    header("Location: ./menu.php");
+}

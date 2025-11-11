@@ -1,12 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['usuario']) || time() > $_SESSION['caduca']) {
-    session_destroy();
-    header("Location: index.php");
-    exit;
-}
-
+$nombre = $_SESSION['nombre'];
 $usuario = $_SESSION['usuario'];
 $rol = $_SESSION['rol'];
 ?>
@@ -17,24 +12,24 @@ $rol = $_SESSION['rol'];
 <title>Menú</title>
 </head>
 <body>
-<h1>Bienvenido <?= htmlspecialchars($usuario) ?></h1>
-<a href="logout.php">Logout</a>
-<hr>
 
-<?php if ($rol === 'ROLE_ALUMNO'): ?>
-    <p>Eres un <strong>ALUMNO</strong>. Estas son tus asignaturas:</p>
-    <ul>
-        <li>Matemáticas</li>
-        <li>Lengua</li>
-        <li>Programación</li>
-    </ul>
-<?php else: ?>
-    <p>Eres un <strong>PROFESOR</strong>. Tu menú:</p>
-    <ul>
-        <li>Gestión de cursos</li>
-        <li>Evaluación de alumnos</li>
-    </ul>
-<?php endif; ?>
+<?php 
+
+if ($rol == 'ROLE_ALUMNO') {
+    
+    echo "<h2>El rol de este usuario es de Alumno</h2>";
+    echo "<br>";
+    echo "<h4>Nombre:  $nombre</h4>";
+
+}  else {
+     echo "<h2>El rol de este usuario es de Profe</h2>";
+    echo "<br>";
+    echo "<h4>Nombre:  $nombre</h4>";
+}
+
+
+
+?>
 
 </body>
 </html>

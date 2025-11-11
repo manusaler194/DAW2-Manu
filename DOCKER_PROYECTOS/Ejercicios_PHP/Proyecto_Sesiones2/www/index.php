@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +9,6 @@
     <title>Document</title>
 </head>
 <?php
-session_start();
-
 
 
 
@@ -16,27 +17,17 @@ session_start();
     $contra = trim($_POST['contra'] ?? '');
     $recordar = isset($_POST['recordar']);
 
-if (empty($usuario) || empty($contra)) {
-        echo "<h2 style='color:red;'>Usuario o contraseña vacíos</h2>";
-    } else {
-        
-        $_SESSION['usuario'] = $usuario;
 
         
-        if ($recordar) {
-            setcookie("recordar", $usuario, time() + 3600);
-        }
-
         
-        header("Location:./autenticar.php");
-        exit;
-    }
+        
+    
 
 
 ?>
 <body>
     
-    <form action="" method="post">
+    <form action="./autenticar.php" method="post">
     <fieldset>
     <input type="text" name="usuario">
     <br>
@@ -48,7 +39,11 @@ if (empty($usuario) || empty($contra)) {
     <input type="submit" value="LOGIN">
     </fieldset>
     </form>
-    
+    <?php 
+    if ($_SESSION['incorrecta']){
+        echo "<h2 style='color: red;' >USUARIO O CONTRASEÑA INCORRECTOS</h2>" ;
+    }
+    ?>
     
 
 
