@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 
 $nombre = $_SESSION['nombre'];
@@ -7,29 +8,37 @@ $rol = $_SESSION['rol'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<title>Menú</title>
+    <meta charset="UTF-8">
+    <title>Menú</title>
 </head>
+
 <body>
 
-<?php 
-
-if ($rol == 'ROLE_ALUMNO') {
+    <?php
     
-    echo "<h2>El rol de este usuario es de Alumno</h2>";
-    echo "<br>";
-    echo "<h4>Nombre:  $nombre</h4>";
+        if (time() < $_SESSION['caduca']) {
+                if ($rol == 'ROLE_ALUMNO') {
+                   
 
-}  else {
-     echo "<h2>El rol de este usuario es de Profe</h2>";
-    echo "<br>";
-    echo "<h4>Nombre:  $nombre</h4>";
-}
+                echo "<h2>El rol de este usuario es de Alumno</h2>";
+                echo "<br>";
+                echo "<h4>Nombre:  $nombre</h4>";
+            } else {
+                echo "<h2>El rol de este usuario es de Profe</h2>";
+                echo "<br>";
+                echo "<h4>Nombre:  $nombre</h4>";
+            }
+        } else {
+            header("Location: ./index.php");
+        }
+    
 
 
 
-?>
+    ?>
 
 </body>
+
 </html>

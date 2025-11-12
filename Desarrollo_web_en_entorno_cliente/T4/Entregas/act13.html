@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DOM en Ventana Secundaria - Ejemplo</title>
+</head>
+<body>
+  <!-- L01: Botón que lanza la función para abrir la ventana secundaria -->
+  <button id="abrirBtn">Abrir ventana secundaria</button>
+
+  <script>
+  // L02: Seleccionamos el botón del DOM
+  let btn = document.getElementById('abrirBtn');
+
+  // L03: Función que abre la ventana secundaria y escribe en su DOM
+  function abrirVentanaSecundaria() {
+    // L04: Abrimos una nueva ventana. 'resizable=no' pide que no sea redimensionable.
+    //        NOTA: los navegadores modernos pueden ignorar esta restricción por seguridad.
+    let features = 'resizable=no,width=900,height=700';
+    let newWin = window.open('', 'ventanaSecundaria', features);
+
+    // L06: Construimos el contenido HTML que se inyectará en la nueva ventana
+    //        Usamos valores calculados para sustituir los <XXXX> pedidos.
+    let urlCompleta = newWin.location.href;                // URL de la ventana secundaria
+    let protocolo = newWin.location.protocol;              // protocolo (ej. 'http:' o 'https:')
+    let nombreCodNav = newWin.navigator.appCodeName;      // nombre en código del navegador
+
+    // L07: Detectar si Java está disponible en la nueva ventana
+    //        navigator.javaEnabled() devuelve true/false (aunque hoy en día suele ser false)
+    let javaDispon = 'Java NO disponible en esta ventana.';
+    try {
+      if (typeof newWin.navigator.javaEnabled === 'function' && newWin.navigator.javaEnabled()) {
+        javaDispon = 'Java SI disponible en esta ventana.';
+      }
+    } catch (e) {
+      // Si hay cualquier problema (por ejemplo restricciones de seguridad), dejamos el mensaje por defecto
+      javaDispon = 'No se pudo determinar si Java está disponible (restricción de seguridad).';
+    }
+
+    // L08: URL para el iframe. Aquí usamos example.com como ejemplo; puedes cambiarla por la que necesites.
+    let iframeSrc = 'https://example.com';
+    let iframeWidth = 800;
+    let iframeHeight = 600;
+
+    // L09: Creamos la estructura HTML final para la ventana secundaria
+    let html = `
+      <!doctype html>
+      <html lang="es">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Ventana secundaria</title>
+        
+      </head>
+      <body>
+        <h3>Ejemplo de Ventana Nueva</h3>
+        <div class="info">URL Completa: <strong>${urlCompleta}</strong></div>
+        <div class="info">Protocolo utilizado: <strong>${protocolo}</strong></div>
+        <div class="info">Nombre en código del navegador: <strong>${nombreCodNav}</strong></div>
+        <div class="info">${javaDispon}</div>
+
+        <h4>Iframe embebido (${iframeWidth}×${iframeHeight})</h4>
+        <iframe src="${iframeSrc}" width="${iframeWidth}" height="${iframeHeight}" title="iframe-ejemplo"></iframe>
+
+      </body>
+      </html>
+    `;
+
+    // L10: Escribimos el HTML en la nueva ventana y cerramos el flujo
+    newWin.document.open();
+    newWin.document.write(html);
+    newWin.document.close();
+
+    // L11: Enfocamos la nueva ventana para que se muestre al usuario
+    newWin.focus();
+  }
+
+  // L12: Asociamos la función al evento click del botón
+  btn.addEventListener('click', abrirVentanaSecundaria);
+  </script>
+</body>
+</html>

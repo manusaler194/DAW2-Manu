@@ -11,17 +11,9 @@ session_start();
 <?php
 
 
-
-
-    $usuario = trim($_POST['usuario'] ?? '');
-    $contra = trim($_POST['contra'] ?? '');
-    $recordar = isset($_POST['recordar']);
-
-
-        
-        
-        
-    
+        $usuario = trim($_POST['usuario'] ?? '');
+        $contra = trim($_POST['contra'] ?? '');
+        $recordar = isset($_POST['recordar']);
 
 
 ?>
@@ -29,7 +21,7 @@ session_start();
     
     <form action="./autenticar.php" method="post">
     <fieldset>
-    <input type="text" name="usuario">
+    <input type="text" name="usuario" value="<?php if(isset($_COOKIE['nombre'])) echo $_COOKIE['nombre']  ?>">
     <br>
     <input type="password" name="contra">
     <br>

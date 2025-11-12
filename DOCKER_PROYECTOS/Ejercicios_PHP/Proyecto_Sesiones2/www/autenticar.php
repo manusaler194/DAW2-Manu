@@ -50,5 +50,18 @@ if ($res ==-1) {
     $_SESSION['rol'] = $usuarios[$res]['rol'];
     $_SESSION['nombre'] = $usuarios[$res]['nombre'];
 
+    if ($_SESSION['rol'] =='ROLE_ALUMNO') {
+        
+        $_SESSION['caduca'] = time()+5;
+    }
+    if ($_SESSION['rol'] =='ROLE_PROFE') {
+        
+        $_SESSION['caduca'] = time()+5;
+    }
+
     header("Location: ./menu.php");
+
+    if (isset($_POST['recordar'])){
+        setcookie("nombre", $usuario,time()+15);
+    }
 }
