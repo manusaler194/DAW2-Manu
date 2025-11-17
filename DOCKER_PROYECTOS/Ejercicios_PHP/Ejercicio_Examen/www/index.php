@@ -5,13 +5,31 @@ session_start();
 if (!isset($_SESSION['tirada'])){
     $_SESSION['tirada'] =0;
     $_SESSION['premio'] =0;
+    
+    
+}else{
 
+    if (condition) {
+        # code...
+    }
     for ($i=0; $i < 4; $i++) { 
-        
         $_SESSION['numeros'][$i] = rand(0,15);
     }
-    
 }
+
+if ($_SESSION['tirada']>=6) {
+    unset($_SESSION['numeros']);
+    $_SESSION['tirada'] = 0;
+    $_SESSION['premio'] = 0;
+   }
+ foreach ($_SESSION['numeros'] as $numero){
+        if ($_POST['valor'] == $numero) {
+            print_r($numero);
+            print_r($_POST['valor']);
+            $_SESSION['premio']+=1000;
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,13 +42,15 @@ if (!isset($_SESSION['tirada'])){
     
     <h4>Numeros premiados <?php foreach ($_SESSION['numeros'] as $numero) echo $numero . " "; ?></h4>
     
-    <h3 style="color:blue"> PREMIOS ACUMULADOS </h3>
+    <h3 style="color:blue"> PREMIOS ACUMULADOS <?php echo $_SESSION['premio'] ?></h3>
     <h4 style="color: blue;">Tiradas: <?php echo $_SESSION['tirada']++;   ?></h4>
 
     <form action="" method="post">
 
     <?php 
-    
+     
+   
+   
     for ($i=0; $i <16 ; $i++) { 
         echo "<button type='submit' name='valor' value='$i'>$i</button>";
         if (($i+1)%4==0){
@@ -39,7 +59,11 @@ if (!isset($_SESSION['tirada'])){
     } 
 
     
-    print_r($_SESSION['numeros'][1]);
+    print_r($_SESSION['numeros']);
+   
+    
+
+    
 
     ?>
     
