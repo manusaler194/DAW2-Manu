@@ -1,7 +1,11 @@
 <?php
 session_start();
 
-
+if (isset($_POST['borrartele'])) {unset($_SESSION['tele']);}
+if (isset($_POST['borrarraton'])) {unset($_SESSION['raton']);}
+if (isset($_POST['borrarteclado'])) {unset($_SESSION['teclado']);}
+if (isset($_POST['borrarcpu'])) {unset($_SESSION['cpu']);}
+if (isset($_POST['cerrarSesion'])) {session_unset();}
 
 
 //session_unset();
@@ -22,18 +26,15 @@ $_SESSION['teclado'] += $teclado;
 $_SESSION['cpu'] += $cpu;
 
 
-$total = $_SESSION['tele']*100+$_SESSION['raton']*5+$_SESSION['teclado']*100+$_SESSION['cpu']*200;
 
-echo "CESTA TOTAL = $total";
-   
+
 
 
 }
-if (isset($_POST['borrartele'])) {unset($_SESSION['tele']);}
-if (isset($_POST['borrarraton'])) {unset($_SESSION['raton']);}
-if (isset($_POST['borrarteclado'])) {unset($_SESSION['teclado']);}
-if (isset($_POST['borrarcpu'])) {unset($_SESSION['cpu']);}
-if (isset($_POST['cerrarSesion'])) {session_unset();}
+$total = $_SESSION['tele']*100+$_SESSION['raton']*5+$_SESSION['teclado']*100+$_SESSION['cpu']*200;
+echo "CESTA TOTAL = $total";
+
+
 
 
 

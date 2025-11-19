@@ -35,8 +35,8 @@ function comprobar($usuario, $contra)
         }
         $i++;
     }
-
     return $res;
+
 }
 $res = comprobar($usuario, $contra);
 if ($res ==-1) {

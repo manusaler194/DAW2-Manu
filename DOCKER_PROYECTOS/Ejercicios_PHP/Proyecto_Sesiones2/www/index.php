@@ -1,5 +1,6 @@
 <?php 
 session_start();
+session_destroy();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +33,7 @@ session_start();
     </fieldset>
     </form>
     <?php 
-    if ($_SESSION['incorrecta']){
+    if (($_SESSION['incorrecta'])){
         echo "<h2 style='color: red;' >USUARIO O CONTRASEÑA INCORRECTOS</h2>" ;
     }
     ?>
