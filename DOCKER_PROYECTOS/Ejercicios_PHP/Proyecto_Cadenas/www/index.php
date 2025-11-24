@@ -114,7 +114,7 @@
             }
             
         }
-        $contraseña = explode($contraseña);
+       // $contraseña = explode($contraseña);
         for ($i=0; $i <count($contraseña) ; $i++) { 
             if ($contraseña[$i]==$contraseña[$i+1] && $contraseña[$i+1]==$contraseña[$i+2]) {
                 echo "No pueden haber mas de tres letras iguales seguidas";

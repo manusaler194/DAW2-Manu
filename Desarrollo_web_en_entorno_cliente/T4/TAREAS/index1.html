@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wordle Mínimo</title>
+    <style>
+     
+      body {
+        font-family: sans-serif;
+        text-align: center;
+      }
+      #grid {
+        display: grid;
+        grid-template-rows: repeat(6, 1fr);
+        gap: 5px;
+        width: 300px;
+        margin: 20px auto;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5px;
+      }
+      .tile {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border: 1px solid gray;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+      
+      .verde {
+        background-color: green;
+        color: white;
+        border-color: green;
+      }
+      .amarillo {
+        background-color: yellow;
+        color: black;
+        border-color: yellow;
+      }
+      .gris {
+        background-color: gray;
+        color: white;
+        border-color: gray;
+      }
+
+      /* Teclado Básico */
+      #keyboard {
+        margin-top: 20px;
+      }
+      .keyboard-row {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px;
+      }
+      #keyboard button {
+        padding: 10px;
+        margin: 2px;
+        font-size: 1em;
+        cursor: pointer;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Wordle</h1>
+
+    <div id="grid"></div>
+
+    <div
+      id="message-container"
+      style="height: 30px; font-weight: bold; margin-bottom: 15px"
+    ></div>
+
+    <div id="keyboard">
+      <div class="keyboard-row">
+        <button data-key="Q">Q</button><button data-key="W">W</button
+        ><button data-key="E">E</button><button data-key="R">R</button
+        ><button data-key="T">T</button><button data-key="Y">Y</button
+        ><button data-key="U">U</button><button data-key="I">I</button
+        ><button data-key="O">O</button><button data-key="P">P</button>
+      </div>
+      <div class="keyboard-row">
+        <button data-key="A">A</button><button data-key="S">S</button
+        ><button data-key="D">D</button><button data-key="F">F</button
+        ><button data-key="G">G</button><button data-key="H">H</button
+        ><button data-key="J">J</button><button data-key="K">K</button
+        ><button data-key="L">L</button>
+      </div>
+      <div class="keyboard-row">
+        <button data-key="ENTER" style="padding: 10px 15px">ENTER</button>
+        <button data-key="Z">Z</button><button data-key="X">X</button
+        ><button data-key="C">C</button><button data-key="V">V</button
+        ><button data-key="B">B</button><button data-key="N">N</button
+        ><button data-key="M">M</button>
+        <button data-key="BACKSPACE" style="padding: 10px 15px">borrar</button>
+      </div>
+    </div>
+
+    <script src="wordle.js"></script>
+  </body>
+</html>
