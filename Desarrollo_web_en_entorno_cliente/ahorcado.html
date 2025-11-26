@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juego del Ahorcado (simple)</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f4f4f4;
+  padding-top: 30px;
+}
+
+#palabraOculta {
+  font-size: 32px;
+  letter-spacing: 8px;
+  margin-bottom: 10px;
+}
+
+#mensaje {
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+input {
+  font-size: 18px;
+  padding: 4px;
+  width: 50px;
+  text-align: center;
+}
+
+button {
+  font-size: 16px;
+  padding: 6px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+
+  <h1>Juego del Ahorcado</h1>
+
+  <p>Palabra:</p>
+  <p id="palabraOculta"></p>
+
+  <p>Fallos: <span id="fallos">0</span> / <span id="maxFallos">6</span></p>
+  <p>Letras usadas: <span id="letrasUsadas"></span></p>
+
+  <input type="text" id="entradaLetra" maxlength="1" placeholder="Letra">
+  <button id="btnProbar">Probar letra</button>
+
+  <p id="mensaje"></p>
+
+  <button id="btnReiniciar">Reiniciar</button>
+
+  <script src="ahorcado.js"></script>
+</body>
+</html>

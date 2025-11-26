@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Hundir la flota simple</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #f4f4f4;
+}
+
+#tablero {
+  display: grid;
+  grid-template-columns: repeat(5, 40px); /* 5 columnas */
+  grid-template-rows: repeat(5, 40px);    /* 5 filas */
+  gap: 4px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.celda {
+  width: 40px;
+  height: 40px;
+  background-color: #9ecbff; /* agua azul */
+  border: 1px solid #333;
+  cursor: pointer;
+  user-select: none;
+}
+
+.celda.agua {
+  background-color: #c0c0c0; /* gris: agua fallada */
+  cursor: default;
+}
+
+.celda.tocado {
+  background-color: #ff9800; /* naranja: tocado */
+  cursor: default;
+}
+
+.celda.hundido {
+  background-color: #e53935; /* rojo: hundido */
+  cursor: default;
+}
+
+</style>
+<body>
+
+  <h1>Hundir la flota (simple)</h1>
+
+  <p id="mensaje">Haz click en una casilla para disparar.</p>
+
+  <div id="tablero"></div>
+
+  <script src="hundirlaflota.js"></script>
+</body>
+</html>
