@@ -1,0 +1,48 @@
+/* Estilos mínimos para estructurar el formulario */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+form {
+    background-color: #ffffff;
+    width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    margin-top: 15px;
+    padding: 8px;
+}
+
+.texto {
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+
+.error {
+    color: red;
+    font-size: 0.85em;
+    display: block;
+    margin-top: 2px;
+}
