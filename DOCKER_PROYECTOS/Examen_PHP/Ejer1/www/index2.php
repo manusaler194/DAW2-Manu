@@ -1,41 +1,37 @@
 <?php 
 session_start();
-session_destroy();
+
 if (isset($_POST['reset'])){
     $_SESSION = [];
+    
 }
-if (!isset($_SESSION['correr'])){
+if (!isset($_SESSION['correr']) || isset($_POST['reset'])){
     $_SESSION['correr'] = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 }
-    if (!isset($_POST['correr'])) {
-        
-        $_POST['random'] = rand(1,4);
-        
-        for ($i=0; $i <20 ; $i++) { 
-           if ($_SESSION['correr'][$i]==1) {
-            $_SESSION['correr'][$i] =0;
-            if ($i+$_POST['random']<=19) {
-            $_SESSION['correr'][$i+$_POST['random']] =1;
-            break;
-            } else {
-                 $_SESSION['correr'][0] =1;
-                 break;
-            }
-           }
-           break;
+if (!isset($_SESSION["posicion"])){$_SESSION["posicion"] =0;}
+if (isset($_POST['tirar'])) {
+    $_SESSION['random'] = rand(1,4);
+    
+    foreach ($_SESSION['correr'] as $key => $value) {
+        if ($_SESSION['correr'][$key]==1) {
+            $_SESSION['correr'][$key] = 0;
+            $_SESSION["posicion"] = $key;
         }
-    } 
-    
+    }
+    $_SESSION["posicion"] += $_SESSION['random'];
+    $_SESSION['correr'][$_SESSION["posicion"]] = 1;
+} else {
+    $_SESSION['random'] ="";
+}
    
     
     
     
 
-    
+echo $_SESSION['correr'][1];    
    
 
-print_r($_POST['random']);
-
+echo $_SESSION['random'];
 ?>
 
 <!DOCTYPE html>
@@ -56,15 +52,16 @@ print_r($_POST['random']);
 <body>
     
 <?php 
-if ($_SESSION['correr']>19){
 
-}
 echo "<table>";
 echo "<tr>";
 
 for ($i=0;$i<20;$i++) {
     
-    if ($_SESSION['correr'][$i] ==1){
+
+    if ($_SESSION["posicion"] >=20){
+        $_SESSION["correr"][19] = 1;
+    } else if ($_SESSION['correr'][$i] ==1){
         echo "<td>&#9816</td>";
         
         
@@ -77,13 +74,15 @@ for ($i=0;$i<20;$i++) {
 
 
 echo "</tr>";
-echo "</table";
+echo "</table>";
 
-
+ if ($_SESSION["posicion"] >=20){
+    echo "JUEGO TERMINADO HAS GANADO!!! DALE A RESET PARA COMENZAR DE NUEVO";
+ }
 ?>
 <form action="" method="post">
 
-    <input type="submit" name="tirar" value="correr">
+    <input type="submit" name="tirar" value="tirar">
     <input type="submit" name="reset" value="reset">
 
 
