@@ -1,6 +1,6 @@
 let form = document.getElementById("registro");
 
-// ---------- FUNCIONES DE VALIDACIÓN ----------
+
 
 function validarNombre() {
   let nombre = document.getElementById("nombre").value.trim();
@@ -26,7 +26,7 @@ function validarFechaNacimiento() {
     edad--;
   }
 
-  // Devuelve true solo si es mayor o igual a 18 años
+  
   return edad >= 18;
 }
 
@@ -73,7 +73,7 @@ function validarPassword() {
   */
   let regex = /^(?=.*\d)(?=.*[!@#%^&*]).{13,}$/;
 
-  // La contraseña debe cumplir el patrón y coincidir ambas
+ 
   return regex.test(pass) && pass === pass2;
 }
 
