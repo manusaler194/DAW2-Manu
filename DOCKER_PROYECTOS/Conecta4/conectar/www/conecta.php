@@ -25,33 +25,34 @@ class Conecta4
 
 
     public function tirar($col)
-    {
-        $res = "";
-        $fichaColocada = false;
+{
+    $res = ""; 
+    $fichaColocada = false;
 
-        if (!$this->fin && $col >= 0 && $col <= 6 && $this->tablero[0][$col] == "") {
+    if (!$this->fin && $col >= 0 && $col <= 6 && $this->tablero[0][$col] == "") {
+        
+        $f = 5;
+        while ($f >= 0 && !$fichaColocada) {
+            if ($this->tablero[$f][$col] == "") {
+                $this->tablero[$f][$col] = $this->turno;
+                $fichaColocada = true;
 
-            $f = 5;
-            while ($f >= 0 && !$fichaColocada) {
-                if ($this->tablero[$f][$col] == "") {
-                    $this->tablero[$f][$col] = $this->turno;
-                    $fichaColocada = true;
-
-                    if ($this->victoria($f, $col, $this->turno)) {
-                        $this->fin = true;
-                        $this->ganador = $this->turno;
-                        $res = "Ganador: " . ($this->turno == "R" ? "Rojo" : "Amarillo");
-                    } else {
-                        $this->turno = ($this->turno == "R") ? "Y" : "R";
-                        $res = "";
-                    }
+                if ($this->victoria($f, $col, $this->turno)) {
+                    $this->fin = true;
+                    $this->ganador = $this->turno;
+                    $res = "Ganador: " . ($this->turno == "R" ? "Rojo" : "Amarillo");
+                } else {
+                    $this->turno = ($this->turno == "R") ? "Y" : "R";
+                    $res = "";
                 }
-                $f--;
             }
+            $f--;
         }
-
-        return $res;
     }
+
+    return $res;
+}
+
 
 
     private function victoria($f, $c, $color)
