@@ -11,7 +11,7 @@ class Conecta4
         $this->reiniciar();
     }
 
-    
+
     public function reiniciar()
     {
         $this->tablero = array();
@@ -23,20 +23,20 @@ class Conecta4
         $this->ganador = "";
     }
 
-    
+
     public function tirar($col)
     {
-        $res = ""; 
+        $res = "";
         $fichaColocada = false;
 
         if (!$this->fin && $col >= 0 && $col <= 6 && $this->tablero[0][$col] == "") {
-            
-            for ($f = 5; $f >= 0; $f--) {
+
+            $f = 5;
+            while ($f >= 0 && !$fichaColocada) {
                 if ($this->tablero[$f][$col] == "") {
                     $this->tablero[$f][$col] = $this->turno;
                     $fichaColocada = true;
 
-                    
                     if ($this->victoria($f, $col, $this->turno)) {
                         $this->fin = true;
                         $this->ganador = $this->turno;
@@ -45,19 +45,15 @@ class Conecta4
                         $this->turno = ($this->turno == "R") ? "Y" : "R";
                         $res = "";
                     }
-                    
                 }
-                if ($fichaColocada) {
-                   
-                    $f = -1; 
-                }
+                $f--;
             }
         }
 
         return $res;
     }
 
-    
+
     private function victoria($f, $c, $color)
     {
         $res = false;
@@ -75,7 +71,7 @@ class Conecta4
             $dc = $direcciones[$iDir][1];
             $count = 1;
 
-            
+
             $i = $f + $df;
             $j = $c + $dc;
             while ($i >= 0 && $i < 6 && $j >= 0 && $j < 7 && $this->tablero[$i][$j] == $color) {
@@ -84,7 +80,7 @@ class Conecta4
                 $j += $dc;
             }
 
-            
+
             $i = $f - $df;
             $j = $c - $dc;
             while ($i >= 0 && $i < 6 && $j >= 0 && $j < 7 && $this->tablero[$i][$j] == $color) {
@@ -93,7 +89,7 @@ class Conecta4
                 $j -= $dc;
             }
 
-            // Si hay 4 o más consecutivas
+            
             if ($count >= 4) {
                 $res = true;
             }
