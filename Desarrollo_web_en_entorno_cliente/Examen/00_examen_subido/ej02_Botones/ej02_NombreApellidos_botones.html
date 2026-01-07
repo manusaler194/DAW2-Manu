@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejercicio del Contador — this y EventListeners</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .botones {
+      display: flex;
+      gap: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Prueba del Contador</h1>
+
+  <p>Pulsa cualquiera de los botones con la consola abierta </p>
+
+  <div class="botones">
+  </div>
+
+  <script>
+    "use strict";
+
+    class Contador {
+      constructor(botones) {
+        this.cuenta = 100;
+        this.botones = botones; 
+
+        // MODIFICA ESTE CÓDIGO HASTA "-------"
+        this.botones[0].addEventListener("click",  );
+        this.botones[1].addEventListener("click",  );
+        // ----------------------------------------------------------------------------- 
+      }
+
+      // MODIFICA ESTE MÉTODO, SIN CAMBIARLE EL NOMBRE, HASTA SIGUIENTE "-------"
+      incrementar(e) {
+        console.log("Llamando incrementarConDelay()");
+        console.log("Id del botón pulsado: ",this.id);
+        this.cuenta++;
+        console.log("incrementar() actualiza cuenta:  ", this.cuenta);
+      }
+      // --------------------------------------------------------------
+
+      // MODIFICA ESTE MÉTODO, SIN CAMBIARLE EL NOMBRE, HASTA SIGUIENTE "-------"
+      incrementarConDelay(e) {
+        console.log("Llamando incrementarConDelay()");
+        console.log("Id del botón pulsado: ", this.id)
+
+        setTimeout(function () {
+          this.cuenta++;
+          console.log("incrementarConDelay() dentro del timeout:", this.cuenta);
+        }, 1000);
+      }
+      // --------------------------------------------------------------------------
+    }
+
+    // NO MODIFIQUES A PARTIR DE AQUÍ  
+    const botonera = document.querySelector(".botones");
+    
+    const btnA = { id: "btnA", text: "incrementar (método 1)" };
+    const btnB = { id: "btnB", text: "incrementar con delay (método 2)" };
+
+    // crea los botones con los atributos .id y .text
+    [btnA, btnB].forEach((btn) => {
+      const btnElem = document.createElement("button");
+      btnElem.id = btn.id;
+      btnElem.innerText = `${btn.id}: ${btn.text}`
+      botonera.appendChild(btnElem);
+    })
+
+    // La clase necesita como parámetro para el constructor un array con los HTML element
+    // ...de los botones 
+    const botonesArr = [
+      document.getElementById("btnA"),
+      document.getElementById("btnB"),
+    ];
+
+    const contador = new Contador(botonesArr);
+  </script>
+</body>
+
+</html>

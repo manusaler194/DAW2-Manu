@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Carrito</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Sistema de Carrito</h1>
+
+    <div id="productos">
+        <button class="boton-producto" data-precio="1.5" data-nombre="Manzana">Manzana (1.50€)</button>
+        <button class="boton-producto" data-precio="2.1" data-nombre="Pan">Pan (2.10€)</button>
+        <button class="boton-producto" data-precio="3.8" data-nombre="Queso">Queso (3.80€)</button>
+        <button class="boton-producto" data-precio="4.5" data-nombre="Café">Café (4.50€)</button>
+    </div>
+
+    <div id="contenedor-listas">
+        <!-- Lista del carrito -->
+        <div class="lista-contenedor">
+            <h2>Carrito</h2>
+            <ul id="carrito"></ul>
+        </div>
+
+        <!-- Lista de objetos comprados -->
+        <div class="lista-contenedor">
+            <h2>Comprados</h2>
+            <ul id="comprados"></ul>
+            <p><strong>Total dinero gastado:</strong> <span id="total">0.00</span> €</p>
+        </div>
+    </div>
+
+    <script src="ej03_nombreApellido_app.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+#productos {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.boton-producto {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#contenedor-listas {
+    display: flex;
+    gap: 40px;
+}
+
+.lista-contenedor {
+    width: 45%;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.item {
+    border: 2px solid gray;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+
+.item.urgente  {
+    border-color: red;
+}
+
+.item-info {
+    flex-grow: 1;
+}
+
+
+
+.btn-eliminar {
+    padding: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    background-color: lightcoral;
+}
+
+.btn-comprar {
+    padding: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    background-color: lightgreen;
+}
