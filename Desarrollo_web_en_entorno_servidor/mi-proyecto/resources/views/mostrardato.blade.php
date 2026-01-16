@@ -7,19 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    @dump($categorias)
-        
-    @forelse ($categorias as $categoria )
-    {{$categoria->nombre}}
 
-        <option value="{{$categoria->id}}">{{$categoria->nombre}} </option>
+    @forelse ($articulos as $articulo )
+
+
+ {{$articulo->titulo}}
 
 
     @empty
     NO HAY INFORMACION
     @endforelse
-    </select>
-    <button type="submit">ENVIAR</button>
-    </form>
+
+
 </body>
 </html>

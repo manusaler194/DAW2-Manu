@@ -9,11 +9,10 @@
 <body>
     <form action="{{route('almacenar')}}" method="post">
 
-        @csrf   
-    @dump($categorias)
+        @csrf
         <select name="cat" id="cat">
     @forelse ($categorias as $categoria )
-    {{$categoria->nombre}}
+ 
 
         <option value="{{$categoria->id}}">{{$categoria->nombre}} </option>
 

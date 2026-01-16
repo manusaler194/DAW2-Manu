@@ -9,22 +9,29 @@ class PruebasController extends Controller
 {
      public function almacenar(Request $request){
 
-        dump($request);
+       // dump($request);
 
 // //LA MEJOR FORMA DE INSERTAR DATOS ya que se hace la comprobación de los campos obligatorios para que no hagan inyeccion y luego inserta.
-     $categorias=$request;
-     $categorias=Categoria::with('articulos')->where('nombre', $categorias)->get();
+     $datos=$request->validate([
+        'cat'=>'required|max:25',
+        ]
+    );
 
-     
+   // dd($datos);
+     $categoria=Categoria::find($datos["cat"]);
+     $articulos = $categoria->articulos;
+    // dump($articulos->toArray());
 
-    return view ('mostrardato', compact('categorias'));
+
+
+    return view ('mostrardato', compact('categoria','articulos'));
 //     //return back();     //te redirecciona a la misma página
    }
     public function ejercicio() {
 
         $categorias =Categoria::all();
 
-        dump($categorias->toArray());
+     //   dump($categorias->toArray());
 
         return view ('ejercicio', compact('categorias'));
     }
