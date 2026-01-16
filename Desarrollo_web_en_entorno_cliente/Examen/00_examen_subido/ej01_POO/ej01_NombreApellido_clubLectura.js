@@ -4,12 +4,40 @@
 //MODIFICA EL CÓDIGO --------------------
 class Libro {
 
-  
+  constructor({titulo,autor,genero,paginas}) {
+
+    this.titulo = titulo;
+    this.autor = autor;
+    this.genero = genero;
+    this.paginas = paginas;
+
+  }
+  info () {
+    return `${this.titulo}  ${this.autor} ${this.genero} ${this.paginas}`
+  }
 }
 
 class ClubLectura {
-
-  
+#biblioteca;
+  constructor() {
+    this.#biblioteca= [];
+  }
+    
+  agregarLibro(libro) {
+    this.#biblioteca.push(libro);
+   
+    
+  }
+  eliminarLibro(titulo) {
+    this.#biblioteca.splice(this.#biblioteca.findIndex(libro => libro.titulo === titulo),1);
+    
+  }
+  filtrarPorGenero(g) {
+    return this.#biblioteca.filter(libro => libro.genero===g);
+  }
+  listar() {
+    return this.#biblioteca.map(libro =>libro.info())
+  }
 }
 
 // FIN MODIFICA EL CÓDIGO ---------------------

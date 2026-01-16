@@ -46,15 +46,15 @@
         this.botones = botones; 
 
         // MODIFICA ESTE CÓDIGO HASTA "-------"
-        this.botones[0].addEventListener("click",  );
-        this.botones[1].addEventListener("click",  );
+        this.botones[0].addEventListener("click", this.incrementar.bind(this) );
+        this.botones[1].addEventListener("click", this.incrementar.bind(this) );
         // ----------------------------------------------------------------------------- 
       }
 
       // MODIFICA ESTE MÉTODO, SIN CAMBIARLE EL NOMBRE, HASTA SIGUIENTE "-------"
       incrementar(e) {
         console.log("Llamando incrementarConDelay()");
-        console.log("Id del botón pulsado: ",this.id);
+        console.log("Id del botón pulsado: ",e.target.id);
         this.cuenta++;
         console.log("incrementar() actualiza cuenta:  ", this.cuenta);
       }
@@ -63,12 +63,12 @@
       // MODIFICA ESTE MÉTODO, SIN CAMBIARLE EL NOMBRE, HASTA SIGUIENTE "-------"
       incrementarConDelay(e) {
         console.log("Llamando incrementarConDelay()");
-        console.log("Id del botón pulsado: ", this.id)
+        console.log("Id del botón pulsado: ", e.target.id)
 
         setTimeout(function () {
           this.cuenta++;
           console.log("incrementarConDelay() dentro del timeout:", this.cuenta);
-        }, 1000);
+        }.bind(this), 1000);
       }
       // --------------------------------------------------------------------------
     }
